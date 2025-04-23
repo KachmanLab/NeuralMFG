@@ -1,0 +1,20 @@
+- Has to be a differential process -> Differentiate over the parameters describing the distribution of bluff.
+- Represents a turn of a single player.
+
+    TODO: The agents' bluffing parameters define a categorical or discrete distribution (e.g., a Gamma).
+        This categorical distribution represents the bluff. We calculate the gradient over the agents' bluffing parameters.
+        Thus, we try to drift towards the optimal bluffing params (blufftimum).
+
+        Neural ODE: improve the estimate of the blufftimum by incorporating the other players' bids
+    TODO: incorporating a single previous bid assumes that the bids are Markovian. That is not true, given that
+        each agent bases their bid on their own hand. Can we do something with the LSTM here?
+
+    TODO: Memory saver: each player throws at the start of their turn. Save the last 5 dice.
+
+    TODO: Infinitely large number of players means infinite number of dice. This has implications for the calculation
+        of probabilities. ->
+        Solution: bids are drawn from a categorical distribution respecting the bounds of the previous bid.
+    ----> Learning problem. See whether the parameters describing the categorical distributions describe the
+        original distribution of dice throws.
+
+    ----> Neural ODE receives bids and own players hands to learn better-informed parameters.
